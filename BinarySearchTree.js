@@ -100,4 +100,90 @@ class BinarySearchTree {
             }
         }
     }
+    
+    bfSearch() { //Breadth First Search
+        let queue = [];
+        let visited = [];
+        
+        if (!this.root) {
+            return null
+        }
+        
+        else {
+            queue.push(this.root)
+            
+            while (queue.length > 0) {
+                let current = queue.shift();
+                visited.push(current.value);
+                
+                if (current.left) {
+                    queue.push(current.left)
+                }
+                
+                if (current.right) {
+                    queue.push(current.right)
+                }
+                
+            }
+            
+            return visited
+        }
+    }
+    
+    dfpreSearch() { //Depth First Pre Order Search
+        let visited = [];
+        let current = this.root;
+        
+        function traverse(node) {
+            visited.push(node.value);
+            if (node.left) {
+                traverse(node.left)
+            }
+            if (node.right) {
+                traverse(node.right)
+            }
+        }
+        traverse(current);
+        return visited;
+    }
+    
+    dfpostSearch() { //Depth First Post Order Search
+        let visited = [];
+        let current = this.root;
+        
+        function traverse(node) {
+            
+            if (node.left) {
+                traverse(node.left)
+            }
+            if (node.right) {
+                traverse(node.right)
+            }
+            
+            visited.push(node.value);
+        }
+        traverse(current);
+        return visited;
+    }
+    
+    dforderSearch() { //Depth First In Order Search
+        let visited = [];
+        let current = this.root;
+        
+        function traverse(node) {
+            if (node.left) {
+                traverse(node.left)
+            }
+            
+            visited.push(node.value);
+            
+            if (node.right) {
+                traverse(node.right)
+            }
+        }
+        traverse(current);
+        return visited;
+    }
+    
+    
 }
