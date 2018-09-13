@@ -12,14 +12,20 @@ class Stack {
         this.length = 0
     }
 
-    //Removing from the beginning of a singly linked list is faster than removing from the end.
-    //The most recently added node, conceptually, will start at the index of 0
-
+    /*
+    Removing from the beginning of a singly linked list is faster than removing from the end;
+    it doesn'require iteration over the entire list.
+    
+    
+    Last refers to the last variable added to the stack, and first refers to the first variable added
+    
+    Last                  First
+    Node ==> Node ==> Node ==> null
+    
+    */
+    
     //Push will essentially function like unshift, because we are working at the beginning of the list.
-    
-    //Last refers to the last variable added to the stack, and first refers to the first variable added.
-    //Last is the top of the stack, and first is the bottom
-    
+    //The most recently added node will occupy the last property.
     push(val) {
 
         let newNode = new Node(val);
