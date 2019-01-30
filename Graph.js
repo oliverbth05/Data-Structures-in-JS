@@ -69,23 +69,29 @@ class Graph {
         
         return results
     }
+    
+    bfs(start) { //Uses a queue instead of a stack, essentially the same as dfs iterative otherwise
+        let queue = [];
+        let visited = {};
+        let results = [];
+        
+        queue.push(start);
+        
+        while(queue.length !== 0) {
+            
+            let vertex = queue.shift();
+            
+            if (visited[vertex]) {
+                continue
+            }
+            
+            visited[vertex] = true;
+            results.push(vertex);
+            queue = queue.concat(this.adjacencyList[vertex])
+        }
+        console.log(results)
+        return results
+    }
 }
 
-let g = new Graph();
-
-g.addVertex('A')
-g.addVertex('B')
-g.addVertex('C')
-g.addVertex('D')
-g.addVertex('E')
-g.addVertex('F')
-
-g.addEdge('A', 'B')
-g.addEdge('A', 'C')
-g.addEdge('B', 'D')
-g.addEdge('C', 'E')
-g.addEdge('D', 'E')
-g.addEdge('D', 'F')
-g.addEdge('E', 'F')
-
-g.dfsIterative('A')
+module.exports = Graph;
